@@ -29,7 +29,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     public void updateDepartment(Department department) {
         String sql = "UPDATE department2 SET title=? WHERE id=?";
-        jdbcTemplate.update(sql, department.getTitle());
+        jdbcTemplate.update(sql, department.getTitle(), department.getId());
     }
 
     public void removeDepartment(long id) {

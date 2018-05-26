@@ -12,8 +12,10 @@ import java.util.List;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
+    //TODO how should i get DEPARTMENT?
 
     private DepartmentDAO departmentDAO;
+    private Department department;
 //    private DepartmentDto departmentDto;
 
     @Autowired
@@ -23,24 +25,40 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
 
-    @Override
+    private void setDepartment(long id, String title) {
+        this.department = new Department();
+        department.setId(id);
+        department.setTitle(title);
+    }
+
+    private void setDepartment(String title) {
+        this.department = new Department();
+        department.setTitle(title);
+    }
+
+    private Department getDepartment() {
+        return this.department;
+    }
+
     public void saveDepartment(String title) {
-        Department newDepartment = new Department();
-        newDepartment.setTitle(title);
-        departmentDAO.saveDepartment(newDepartment);
+        setDepartment(title);
+        departmentDAO.saveDepartment(getDepartment());
 
     }
 
-    public void updateDepartment(Department department) {
+    public void updateDepartment(long id, String title) {
+        Department department = getDepartmentById(id);
+        department.setTitle(title);
+        departmentDAO.updateDepartment(department);
 
     }
 
     public void removeDepartment(long id) {
-departmentDAO.removeDepartment(id);
+        departmentDAO.removeDepartment(id);
     }
 
     public Department getDepartmentById(long id) {
-        return null;
+        return departmentDAO.getDepartmentById(id);
     }
 
     public List<Department> findAllDepartments() {

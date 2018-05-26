@@ -10,7 +10,7 @@ public interface DepartmentService {
     //    void saveDepartment(Department department);
     void saveDepartment(String title);
 
-    void updateDepartment(Department department);
+    void updateDepartment(long id, String title);
 
     void removeDepartment(long id);
 

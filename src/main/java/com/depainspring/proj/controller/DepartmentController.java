@@ -27,6 +27,17 @@ public class DepartmentController {
         model.put("departmentsList", departmentList);
         return "departments_list";
     }
+
+    @GetMapping("/department_update_page")
+    public String getDepartmentUpdatePage(Map<String, Object> model,
+                                          @RequestParam(name = "departmentId") long id,
+                                          @RequestParam(name = "departmentTitle")String title)
+    {
+        model.put("departmentId", id);
+        model.put("departmentTitle", title);
+        return "department_update_form";
+    }
+
     @PostMapping
     public String saveDepartment(Map<String, Object> model, @RequestParam(name = "newDepartmentTitle") String title) {
         service.saveDepartment(title);
@@ -38,6 +49,18 @@ public class DepartmentController {
     @PostMapping("/delete/{id}")
     public String deleteDepartment(Map<String, Object> model, @PathVariable(name = "id") long id) {
         service.removeDepartment(id);
+        List<DepartmentDto> departmentList = service.getDepartmentDtoList();
+        model.put("departmentsList", departmentList);
+        return "departments_list";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateDepartment(Map<String, Object> model,
+                                   @PathVariable(name = "id") long id,
+                                   @RequestParam(name = "title") String title)
+    {
+
+        service.updateDepartment(id, title);
         List<DepartmentDto> departmentList = service.getDepartmentDtoList();
         model.put("departmentsList", departmentList);
         return "departments_list";
