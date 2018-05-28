@@ -47,7 +47,7 @@
            <c:out value="${depp.employeeNumber}"/>
             </td>
             <td bgcolor="#99ff33">
-                <form action="/employees/${depp.id}" method="get">
+                <form action="/employees" method="get">
                     <input name="command" type="hidden" value="employeesList"/>
                     <input name="departmentId" type="hidden" value="${depp.id}"/>
                     <input name="departmentTitle" type="hidden" value="${depp.title}"/>
