@@ -12,28 +12,23 @@ import java.util.Properties;
 
 
 @Component
-public class MessageManager implements MessageManagerConstants {
+public class MessageManager  {
 
+    private Environment environment;
 
+    public MessageManager(Environment environment) {
+        this.environment = environment;
+        }
 
-   /* private static MessageManager instance = null;
-    private Properties properties;*/
-   private String DEP_RECORD_UPDATE_SUCCESS_MESSAGE;
-
-
-//private Environment environment;
-
-    public MessageManager() {
-
+    public Environment getEnvironment() {
+        return environment;
     }
 
-    public String getDEP_RECORD_UPDATE_SUCCESS_MESSAGE() {
-        return DEP_RECORD_UPDATE_SUCCESS_MESSAGE;
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
     }
 
-    public void setDEP_RECORD_UPDATE_SUCCESS_MESSAGE(String DEP_RECORD_UPDATE_SUCCESS_MESSAGE) {
-        this.DEP_RECORD_UPDATE_SUCCESS_MESSAGE = DEP_RECORD_UPDATE_SUCCESS_MESSAGE;
-    }
+}
 
     /* public static MessageManager getInstance() {
         if (instance == null) {
@@ -67,4 +62,3 @@ public class MessageManager implements MessageManagerConstants {
     }
 */
 
-}
