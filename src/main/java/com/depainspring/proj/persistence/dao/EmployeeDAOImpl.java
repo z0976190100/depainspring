@@ -21,7 +21,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     public void saveEmployee(Employee employee) {
-        String sql = "INSERT INTO employee2 (first_name, last_name, department_id_long, login, pass, birth_date) VALUES (?)";
+        String sql = "INSERT INTO employee2 (first_name, last_name, department_id_long, login, pass, birth_date) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, employee.getFirstName(),
                 employee.getLastName(),
                 employee.getDepartment(),

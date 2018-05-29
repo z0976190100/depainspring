@@ -16,10 +16,12 @@ public class WebAppInit implements WebApplicationInitializer {
             // Create the 'root' Spring application context
             AnnotationConfigWebApplicationContext rootContext =
                     new AnnotationConfigWebApplicationContext();
-            rootContext.register(SpringConfig.class);
+            rootContext.register(SpringConfig.class, MessagesConfig.class);
 
-            // Manage the lifecycle of the root application context
             container.addListener(new ContextLoaderListener(rootContext));
+
+
+
 
             // Create the dispatcher servlet's Spring application context
             AnnotationConfigWebApplicationContext dispatcherContext =

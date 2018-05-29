@@ -2,10 +2,12 @@ package com.depainspring.proj.controller;
 
 import com.depainspring.proj.service.DepartmentService;
 import com.depainspring.proj.service.dto.DepartmentDto;
+import com.depainspring.proj.service.util.MessageManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,8 @@ import java.util.Map;
 @RequestMapping("/departments")
 public class DepartmentController {
 
+    @Autowired
+    private MessageManager messageManager;
 
     private DepartmentService service;
 
@@ -25,6 +29,10 @@ public class DepartmentController {
     public String getListDepartments(Map<String, Object> model) {
         List<DepartmentDto> departmentList = service.getDepartmentDtoList();
         model.put("departmentsList", departmentList);
+        Map<String, String> responseMessages = new HashMap<>();
+        String message = messageManager.getDEP_RECORD_UPDATE_SUCCESS_MESSAGE();
+        responseMessages.put("DEP_RECORD_UPDATE_SUCCESS_MESSAGE", message);
+        model.put("responseMessages", responseMessages);
         return "departments_list";
     }
 

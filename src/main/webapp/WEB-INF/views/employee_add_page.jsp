@@ -115,7 +115,7 @@
                 <b>Confirm Password<sup>*</sup></b>
                 <br>
                 <form:input type="password"
-                            path="pass"
+                            path="pass2"
                             size="10"
                             maxlength="10"
                 />
