@@ -31,7 +31,6 @@ public class SpringConfig {
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        System.out.println(getProp("DB_DRIVER_NAME"));
         dataSource.setDriverClassName(getProp("DB_DRIVER_NAME"));
         dataSource.setUrl(getProp("DB_URL"));
         dataSource.setUsername(getProp("DB_LOGIN"));
@@ -39,33 +38,4 @@ public class SpringConfig {
         return dataSource;
     }
 
-   /* @Bean*//*(name = "ddao")*//*
-    public DepartmentDAO getDepartmentDAO() {
-        return new DepartmentDAOImpl();
-    }
-
-    @Bean
-    *//*@Bean(name = "dser")*//*
-    public DepartmentService getDepartmentService() {
-        return new DepartmentServiceImpl();
-    }
-
-    @Bean
-    *//*@Bean(name = "edao")*//*
-    public EmployeeDAO getEmployeeDAO(){
-        return new EmployeeDAOImpl(getJdbcTemplate());
-    }
-
-    @Bean
-//    @Bean(name = "eser")
-    public EmployeeService getEmployeeService(){
-        return new EmployeeServiceImpl();
-    }
-
-    @Bean
-//    @Bean(name = "dmap")
-    public DepartmentMapper getDepartmentMapperImpl(){
-        return new DepartmentMapperImpl();
-    }
-*/
 }
