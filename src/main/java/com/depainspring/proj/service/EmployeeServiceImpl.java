@@ -27,7 +27,7 @@ employeeDAO.saveEmployee(employee);
     }
 
     public void removeEmployee(long id) {
-
+employeeDAO.removeEmployee(id);
     }
 
     public Employee getEmployeeById(long id) {

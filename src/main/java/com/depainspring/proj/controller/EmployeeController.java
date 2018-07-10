@@ -51,11 +51,13 @@ public class EmployeeController {
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteEmployee(Map<String, Object> model, @PathVariable(name = "id") long id) {
+    public String deleteEmployee(Map<String, Object> model,
+                                 @PathVariable(name = "departmentId") long departmentId,
+                                 @PathVariable(name = "id") long id) {
         service.removeEmployee(id);
         //long
 
-        return "employees_list";
+        return "redirect:/employees/{departmentId}";
     }
 
    /* @PostMapping("/edit/{id}")

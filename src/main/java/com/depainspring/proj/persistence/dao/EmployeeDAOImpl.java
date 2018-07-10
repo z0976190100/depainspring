@@ -37,7 +37,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     public void removeEmployee(long id) {
-
+        String sql = "DELETE FROM employee2 WHERE id=?";
+        jdbcTemplate.update(sql, id);
     }
 
     public Employee getEmployeeById(long id) {

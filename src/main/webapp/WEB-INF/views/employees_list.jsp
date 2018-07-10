@@ -70,7 +70,7 @@
         </td>
 
         <td bgcolor="#cc3300">
-            <form action="/employeedelete" method="post">
+            <form action="/employees/${departmentId}/delete/${employee.id}" method="post">
                 <input name="command" type="hidden" value="employeeDelete" />
                 <input name="empid" type="hidden" value="${employee.id}" />
                 <input name="departmentId" type="hidden" value="${departmentId}" />
