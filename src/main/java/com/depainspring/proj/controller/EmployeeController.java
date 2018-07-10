@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/employees")
+@RequestMapping("/employees/{departmentId}")
 public class EmployeeController {
 
     private EmployeeService service;
@@ -21,8 +21,9 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public String getListEmployees(@RequestParam("departmentId") long id, Map<String, Object> model) {
-        List<Employee> employeesByDepartmentId = service.findAllEmployeesByDepartmentId(id);
+    public String getListEmployees(@PathVariable(name = "departmentId") long departmentId,
+                                   Map<String, Object> model) {
+        List<Employee> employeesByDepartmentId = service.findAllEmployeesByDepartmentId(departmentId);
         model.put("employeesList", employeesByDepartmentId);
         return "employees_list";
     }
@@ -34,7 +35,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/add_form")
-    public String getEmployeeAddForm(@RequestParam("departmentId") long departmentId, Map<String, Object> model) {
+    public String getEmployeeAddForm(@PathVariable(name = "departmentId") long departmentId, Map<String, Object> model) {
         model.put("departmentId", departmentId);
         model.put("newEmployee", new Employee());
         return "employee_add_page";
@@ -49,6 +50,13 @@ public class EmployeeController {
         return "employees_list";
     }
 
+    @PostMapping("/delete/{id}")
+    public String deleteEmployee(Map<String, Object> model, @PathVariable(name = "id") long id) {
+        service.removeEmployee(id);
+        //long
+
+        return "employees_list";
+    }
 
    /* @PostMapping("/edit/{id}")
     public String editEmployee(@RequestParam("departmentId") long departmentId,

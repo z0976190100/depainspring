@@ -11,7 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<a href="login.jsp">goto login</a>
 <a href="/departments">departments List</a>
 </body>
 </html>

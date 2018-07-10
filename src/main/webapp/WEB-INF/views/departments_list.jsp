@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
 <html>
@@ -9,15 +10,15 @@
 </head>
 <body style="font-family:'Roboto Slab'">
 
-<c:if test="${not empty requestScope.user}">
-    <c:set var="username" value="${requestScope.user}" scope="application"/>
+<c:if test="${not empty sessionScope.Username}">
+    <c:set var="username" value="${sessionScope.Username}" scope="session"/>
 </c:if>
 
 <c:set var="deppList" value="${requestScope.departmentsList}" />
 
 <h3>welcome, ${username}</h3>
 
-<form action="/quit" method="post"><input type="submit" value="Quit"/></form>
+<form:form action="/logout" method="post"><input type="submit" value="Quit"/></form:form>
 
 <hr/>
 
@@ -47,27 +48,27 @@
            <c:out value="${depp.employeeNumber}"/>
             </td>
             <td bgcolor="#99ff33">
-                <form action="/employees" method="get">
+                <form:form action="/employees/${depp.id}" method="get">
                     <input name="command" type="hidden" value="employeesList"/>
                     <input name="departmentId" type="hidden" value="${depp.id}"/>
                     <input name="departmentTitle" type="hidden" value="${depp.title}"/>
                     <input type="submit" value="Employees list"/>
-                </form>
+                </form:form>
             </td>
             <td bgcolor="#99ff33">
-                <form action="/departments/department_update_page" method="get">
+                <form:form action="/departments/department_update_page" method="get">
                     <input name="command" type="hidden" value="departmentUpdate"/>
                     <input name="departmentId" type="hidden" value="${depp.id}"/>
                     <input name="departmentTitle" type="hidden" value="${depp.title}"/>
                     <input type="submit" value="Rename"/>
-                </form>
+                </form:form>
             </td>
             <td bgcolor="#cc3300">
-                <form action="/departments/delete/${depp.id}" method="post">
+                <form:form action="/departments/delete/${depp.id}" method="post">
                     <input name="command" type="hidden" value="departmentDelete"/>
                     <%--<input name="departmentId" type="hidden" value="${depp.id}"/>--%>
                     <input type="submit" value="Delete"/>
-                </form>
+                </form:form>
             </td>
         </tr>
     </c:forEach>
@@ -88,12 +89,12 @@
 <table>
     <tr>
         <td>
-            <form action="/departments" method="post">
+            <form:form action="/departments" method="post">
                 <input name="command" type="hidden" value="departmentAdd"/>
                 <input name="newDepartmentTitle" placeholder="New DEPARTMENT Title"
                        value="${requestScope.depTitleInputValue}"/>
                 <input type="submit" value="Add new Department"/>
-            </form>
+            </form:form>
         </td>
     </tr>
 </table>

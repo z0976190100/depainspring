@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="depainspring:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="depsinspring.war">
-      <element id="artifact" artifact-name="depainspring:war exploded" />
-    </root>
-  </artifact>
-</component>

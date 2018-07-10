@@ -5,7 +5,6 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/com/depainspring/proj/config/MessagesConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/depainspring/proj/config/SecurityWebConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/depainspring/proj/config/SprindWebConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/depainspring/proj/config/SpringConfig.java</file>
         </fileset>
@@ -48,5 +47,6 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:4.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:4.2.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.0.2.RELEASE" level="project" />
   </component>
 </module>

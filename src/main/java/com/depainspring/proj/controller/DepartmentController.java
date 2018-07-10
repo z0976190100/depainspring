@@ -16,23 +16,23 @@ import java.util.Map;
 @RequestMapping("/departments")
 public class DepartmentController {
 
-    private MessageManager messageManager;
+    //private MessageManager messageManager;
     private DepartmentService service;
 
     @Autowired
     public DepartmentController(DepartmentService service, MessageManager messageManager) {
         this.service = service;
-        this.messageManager = messageManager;
+       // this.messageManager = messageManager;
     }
 
     @GetMapping
     public String getListDepartments(Map<String, Object> model) {
         List<DepartmentDto> departmentList = service.getDepartmentDtoList();
         model.put("departmentsList", departmentList);
-        Map<String, String> responseMessages = new HashMap<>();
-        String message = messageManager.getEnvironment().getProperty("hui");
-        responseMessages.put("DEP_RECORD_UPDATE_SUCCESS_MESSAGE", message);
-        model.put("responseMessages", responseMessages);
+//        Map<String, String> responseMessages = new HashMap<>();
+//        String message = messageManager.getEnvironment().getProperty("hui");
+//        responseMessages.put("DEP_RECORD_UPDATE_SUCCESS_MESSAGE", message);
+//        model.put("responseMessages", responseMessages);
         return "departments_list";
     }
 
